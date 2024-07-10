@@ -36,6 +36,7 @@ Clone this repository to your local machine
 
 git clone <repository-url>
 cd <repository-directory>
+
   Step 2: Create Kubernetes YAML Files
 Create the necessary Kubernetes manifest files in your project directory.
 
