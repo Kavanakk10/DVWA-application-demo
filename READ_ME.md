@@ -11,11 +11,7 @@ This project demonstrates how to deploy the Damn Vulnerable Web Application (DVW
 - [Deployment](#deployment)
 - [Accessing DVWA](#accessing-dvwa)
 - [Showcasing Attack Surfaces](#showcasing-attack-surfaces)
-- [Contributing](#contributing)
-- [Testing](#testing)
-- [License](#license)
-- [Credits](#credits)
-- [Contact](#contact)
+- [conclusion](#conclusion) 
 
 ## Introduction
 
@@ -40,31 +36,31 @@ Clone this repository to your local machine:
 ```bash
 git clone <repository-url>
 cd <repository-directory>
-  [25/06, 12:37 pm] ....: Step 2: Create Kubernetes YAML Files
+  Step 2: Create Kubernetes YAML Files
 Create the necessary Kubernetes manifest files in your project directory.
-[25/06, 12:40 pm] ....: Apply Kubernetes Manifests
+ Apply Kubernetes Manifests
 Apply the YAML files to create the DVWA deployment and service:
-[25/06, 1:23 pm] ....: Step 3: Apply Kubernetes Manifests
+ Step 3: Apply Kubernetes Manifests
 Apply the YAML files to create the DVWA deployment and service:
 
 code
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
-[25/06, 1:25 pm] ....: Configuration
+##Configuration
 The provided YAML files include basic configurations for deploying DVWA. Modify the configurations as needed, such as updating environment variables, resource limits, or replica counts.
 
-Deployment
+##Deployment
 Using Docker Desktop Kubernetes
 Ensure Kubernetes is enabled in Docker Desktop settings.
 
 code
 kubectl config use-context docker-desktop
-[25/06, 1:25 pm] ....: Apply the manifests:
+ Apply the manifests:
 
 code
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
-[25/06, 1:25 pm] ....: Accessing DVWA
+## Accessing DVWA
 Port Forwarding (for Docker Desktop)
 Use port forwarding to access the DVWA application:
 
@@ -72,16 +68,17 @@ Use port forwarding to access the DVWA application:
 
 kubectl port-forward svc/dvwa-service 8080:80
 Open your browser and navigate to http://localhost:8080 to access the DVWA application.
-[25/06, 1:26 pm] ....: Prerequisites
+Prerequisites
 DVWA Deployment: Ensure DVWA is deployed and accessible.
-Browser: Use a web browser to interact with the DVWA interface.
+##showcasing attack surface
+Browser: Use a web browr to interact with the DVWA interface.
 1. SQL Injection
 Objective: Exploit a SQL injection vulnerability to extract information from the database.
 
 Steps:
 
 Access DVWA: Open your browser and navigate to the DVWA application (e.g., http://localhost:<node_port>).
-[25/06, 1:28 pm] ....: Login: Use the default credentials to log in.
+ Login: Use the default credentials to log in.
 
 Username: admin
 Password: password
@@ -137,4 +134,4 @@ code
 kubectl delete deployment dvwa
 kubectl delete svc dvwa
 Conclusion
-By following these steps, you can demonstrate SQL Injection, XSS, and Command Injection vulnerabilities on the DVWA application deployed on your Kubernetes cluster. These demonstrations are crucial for understanding common web vulnerabilities and their potential impact. Always remember to conduct ethical hacking responsibly and within legal boundaries.
+By following these steps, you can demonstrate SQL Injection, XSS, and Command Injection vulnerabilities on the DVWA application deployed on your Kubernetes cluster. 
