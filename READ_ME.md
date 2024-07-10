@@ -29,37 +29,48 @@ Before you begin, ensure you have the following installed on your local machine:
 
 ## Installation
 
-### Step 1: Clone the Repository
+ Step 1: Clone the Repository
 
-Clone this repository to your local machine:
+Clone this repository to your local machine
 
-```bash
+
 git clone <repository-url>
 cd <repository-directory>
   Step 2: Create Kubernetes YAML Files
 Create the necessary Kubernetes manifest files in your project directory.
+
  Apply Kubernetes Manifests
+ 
 Apply the YAML files to create the DVWA deployment and service:
+
  Step 3: Apply Kubernetes Manifests
 Apply the YAML files to create the DVWA deployment and service:
 
-code
+
 kubectl apply -f deployment.yaml
+
 kubectl apply -f service.yaml
-##Configuration
+
+## Configuration
+
 The provided YAML files include basic configurations for deploying DVWA. Modify the configurations as needed, such as updating environment variables, resource limits, or replica counts.
 
-##Deployment
-Using Docker Desktop Kubernetes
+
+## Deployment
+
+Using Docker Desktop Kubernetes. 
 Ensure Kubernetes is enabled in Docker Desktop settings.
 
-code
+
 kubectl config use-context docker-desktop
+
  Apply the manifests:
 
-code
+
 kubectl apply -f deployment.yaml
+
 kubectl apply -f service.yaml
+
 ## Accessing DVWA
 Port Forwarding (for Docker Desktop)
 Use port forwarding to access the DVWA application:
@@ -67,10 +78,14 @@ Use port forwarding to access the DVWA application:
                  
 
 kubectl port-forward svc/dvwa-service 8080:80
+
 Open your browser and navigate to http://localhost:8080 to access the DVWA application.
+
 Prerequisites
 DVWA Deployment: Ensure DVWA is deployed and accessible.
-##showcasing attack surface
+
+
+## showcasing attack surfaces
 Browser: Use a web browr to interact with the DVWA interface.
 1. SQL Injection
 Objective: Exploit a SQL injection vulnerability to extract information from the database.
@@ -82,6 +97,7 @@ Access DVWA: Open your browser and navigate to the DVWA application (e.g., http:
 
 Username: admin
 Password: password
+
 Set Security Level: Navigate to the DVWA Security tab and set the security level to Low.
 
 Navigate to SQL Injection: Go to the SQL Injection section from the DVWA menu.
@@ -89,9 +105,10 @@ Navigate to SQL Injection: Go to the SQL Injection section from the DVWA menu.
 Perform SQL Injection:
 
 In the input field (e.g., "User ID"), enter the following SQL injection payload:
- code
+ 
 1' OR '1'='1
 Click the Submit button.
+
 Observe the Result: The application should return all user records from the database, indicating that the SQL injection was successful.
 
 2. Cross-Site Scripting (XSS)
@@ -104,9 +121,10 @@ Navigate to XSS: Go to the XSS (Stored) section from the DVWA menu.
 Perform XSS Attack:
 
 In the "Name" input field, enter the following XSS payload:
+
 html
-code
 <script>alert('XSS');</script>
+
 Click the Submit button.
 Observe the Result: The script should execute, displaying an alert dialog with the message "XSS". This indicates that the XSS attack was successful.
 
@@ -121,17 +139,19 @@ Perform Command Injection:
 
 In the input field (e.g., "Enter an IP address"), enter the following command injection payload:
 
-code
 127.0.0.1 && ls
 Click the Submit button.
+
 Observe the Result: The application should display the output of the ls command, listing the files and directories on the server, indicating that the command injection was successful.
 
 Notes on Security and Ethical Hacking
 Environment: Ensure you are performing these attacks in a controlled and legal environment, such as a local or private test network.
+
 Cleanup: After demonstrating the attack vectors, clean up your Kubernetes resources to prevent unnecessary resource usage.
 
-code
+
 kubectl delete deployment dvwa
 kubectl delete svc dvwa
-Conclusion
+
+## Conclusion
 By following these steps, you can demonstrate SQL Injection, XSS, and Command Injection vulnerabilities on the DVWA application deployed on your Kubernetes cluster. 
